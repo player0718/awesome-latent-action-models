@@ -1,8 +1,12 @@
+<h1 align="center">Awesome Latent Action Models (LAM)</h1>
+
 <p align="center">
-  <img src="assets/awesome-latent-action-models-banner.png" alt="Awesome Latent Action Models academic banner" width="100%">
+  <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
 </p>
 
-# Awesome Latent Action Models (LAM) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+<p align="center">
+  <img src="assets/awesome-latent-action-models-banner.png" alt="Awesome Latent Action Models banner" width="100%">
+</p>
 
 **A curated list of latent-action papers, systems, code, probes, and open problems.**
 
