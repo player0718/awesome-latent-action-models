@@ -2,6 +2,9 @@
 
 <p align="center">
   <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
+  <img src="https://img.shields.io/badge/Papers-70%2B-blue" alt="Papers: 70+">
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-orange.svg" alt="PRs Welcome"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg" alt="License: CC0-1.0"></a>
 </p>
 
 <p align="center">
@@ -22,10 +25,10 @@ This repository provides a curated collection of papers, systems, code, probes, 
 
 The repository is organized around four reading paths:
 
-- 🧱 **Foundations & Precursors**: early observation-only control, playable video, and latent skill spaces.
 - 🤖 **Robot Policy & VLA Pretraining**: latent actions used for policy learning, VLA pretraining, and cross-embodiment transfer.
 - 🌍 **World Models & Interactive Generation**: latent actions as control interfaces for generated rollouts and world-action models.
 - 🔬 **Analysis, Robustness & Theory**: probes, failure modes, evaluation gaps, and borderline cases.
+- 🧱 **Foundations & Precursors**: early observation-only control, playable video, and latent skill spaces.
 
 Found this useful? Star the repository to help others discover it. ⭐
 
@@ -34,13 +37,13 @@ Found this useful? Star the repository to help others discover it. ⭐
 - [🎯 Aim](#aim)
 - [🧭 Evolution at a Glance](#evolution-at-a-glance)
 - [📝 Papers & Surveys](#papers--surveys)
-- [🧱 Foundations & Precursors](#foundations--precursors)
 - [🤖 Robot Policy & VLA Pretraining](#robot-policy--vla-pretraining)
 - [🌍 World Models & Interactive Generation](#world-models--interactive-generation)
 - [🔬 Analysis, Robustness & Theory](#analysis-robustness--theory)
 - [🟨 Borderline: Pseudo-Action Labeling](#borderline-pseudo-action-labeling)
+- [🧱 Foundations & Precursors](#foundations--precursors)
 - [🧪 Evaluation & Probing](#evaluation--probing)
-- [🛠️ Open-Source Implementations](#open-source-implementations)
+- [❤️ Contact](#contact)
 - [🤝 Contributing](#contributing)
 - [⚖️ License](#license)
 
@@ -81,100 +84,6 @@ timeline
   [![arXiv](https://img.shields.io/badge/arXiv-2402.15391-b31b1b.svg)](https://arxiv.org/abs/2402.15391)
 - [Core] **Learning to Act without Actions** (LAPO, 2024) introduces the observation-only latent-action policy loop.  
   [![arXiv](https://img.shields.io/badge/arXiv-2312.10812-b31b1b.svg)](https://arxiv.org/abs/2312.10812) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/schmidtdominik/LAPO)
-
-## Foundations & Precursors
-
-### Models at a glance
-
-| Name | Year | Representation | Objective | Data | Primary use | Links |
-|---|---:|---|---|---|---|---|
-| Genie 2 | 2024 | continuous/action interface | world-model | game/sim | WM-control | [Blog](https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/) |
-| IGOR | 2024 | continuous | IDM+FDM | human-video + robot | cross-embodiment | [Paper](https://arxiv.org/abs/2411.00785) |
-| DynaMo | 2024 | continuous | IDM+FDM | robot | representation pretraining | [Paper](https://arxiv.org/abs/2409.12192), [Code](https://github.com/jeffacce/dynamo_ssl) |
-| Genie | 2024 | discrete-VQ | IDM+FDM | game video | WM-control | [Paper](https://arxiv.org/abs/2402.15391) |
-| LAPO | 2024 | continuous -> discrete | IDM+FDM | game/sim | policy-decode | [Paper](https://arxiv.org/abs/2312.10812), [Code](https://github.com/schmidtdominik/LAPO) |
-| XSkill | 2023 | skill prototypes | contrastive | human-video + robot | cross-embodiment | [Paper](https://arxiv.org/abs/2307.09955), [Code](https://github.com/real-stanford/xskill) |
-| MimicPlay | 2023 | continuous plan | structured | human play video + robot | policy-decode | [Paper](https://arxiv.org/abs/2302.12422), [Code](https://github.com/j96w/MimicPlay) |
-| FICC | 2023 | discrete-VQ | IDM+FDM | game video | WM-control, policy-decode | [Paper](https://openreview.net/forum?id=Sy-o2N0hF4f), [Code](https://github.com/YeWR/FICC) |
-| Playable Environments | 2022 | discrete | IDM+FDM | video | WM-control | [Paper](https://arxiv.org/abs/2203.01914), [Code](https://github.com/willi-menapace/PlayableEnvironments) |
-| Playable Video Generation | 2021 | discrete | IDM+FDM | video | WM-control | [Paper](https://arxiv.org/abs/2101.12195), [Code](https://github.com/willi-menapace/PlayableVideoGeneration) |
-| Play-LMP | 2019 | continuous plan | structured | robot play | policy-decode | [Paper](https://arxiv.org/abs/1903.01973), [Project](https://learning-from-play.github.io) |
-| ILPO | 2019 | discrete | IDM+FDM | game/sim | policy-decode | [Paper](https://arxiv.org/abs/1805.07914), [Code](https://github.com/ashedwards/ILPO) |
-| CLASP | 2019 | continuous | world-model | sim video | policy-decode | [Paper](https://arxiv.org/abs/1806.09655) |
-
-### Entries
-
-- [System] **Genie 2** — *A Large-Scale Foundation World Model*. Google DeepMind, 2024.  
-  [![Blog](https://img.shields.io/badge/Blog-DeepMind-blue.svg)](https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/)  
-  `repr: continuous/action interface` `obj: world-model` `data: game/sim` `use: WM-control`  
-  Scales the interactive-world-model line to richer 3D environments and longer horizons.
-
-- **IGOR** — *Image-GOal Representations are the Atomic Control Units for Foundation Models in Embodied AI*. 2024.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2411.00785-b31b1b.svg)](https://arxiv.org/abs/2411.00785)  
-  `repr: continuous` `obj: IDM+FDM` `data: human-video + robot` `use: cross-embodiment`  
-  Studies image-goal/action units as transferable control primitives across human and robot demonstrations.
-
-- [Borderline] **DynaMo** — *In-Domain Dynamics Pretraining for Visuo-Motor Control*. NeurIPS 2024.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2409.12192-b31b1b.svg)](https://arxiv.org/abs/2409.12192) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/jeffacce/dynamo_ssl)  
-  `repr: continuous` `obj: IDM+FDM` `data: robot` `use: policy-pretrain`  
-  Jointly trains latent inverse and forward dynamics on action-free demonstrations; the latent action is a representation-learning bottleneck rather than an action interface.
-
-- [Core] **Genie** — *Genie: Generative Interactive Environments*. ICML 2024 Best Paper.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2402.15391-b31b1b.svg)](https://arxiv.org/abs/2402.15391)  
-  `repr: discrete-VQ` `obj: IDM+FDM` `data: game/sim` `use: WM-control`  
-  Establishes VQ latent actions as the control interface for a playable generative environment.
-
-- [Core] **LAPO** — *Learning to Act without Actions*. ICLR 2024 spotlight.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2312.10812-b31b1b.svg)](https://arxiv.org/abs/2312.10812) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/schmidtdominik/LAPO)  
-  `repr: continuous -> discrete` `obj: IDM+FDM` `data: game/sim` `use: policy-decode`  
-  Minimal recipe: infer latent actions from observation-only data, then ground them with a small labeled set.
-
-- **XSkill** — *Cross Embodiment Skill Discovery*. CoRL 2023.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2307.09955-b31b1b.svg)](https://arxiv.org/abs/2307.09955) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/real-stanford/xskill)  
-  `repr: skill prototypes` `obj: contrastive` `data: human-video + robot` `use: cross-embodiment`  
-  Discovers skill prototypes from unlabeled human and robot video and composes them for cross-embodiment imitation.
-
-- [Borderline] **MimicPlay** — *Long-Horizon Imitation Learning by Watching Human Play*. CoRL 2023 oral.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2302.12422-b31b1b.svg)](https://arxiv.org/abs/2302.12422) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/j96w/MimicPlay)  
-  `repr: continuous plan` `obj: structured` `data: human-video + robot` `use: policy-decode`  
-  Learns a latent plan space from action-free human play video to guide a low-level policy trained with few teleoperated demonstrations.
-
-- **FICC** — *Become a Proficient Player with Limited Data through Watching Pure Videos*. ICLR 2023.  
-  [![OpenReview](https://img.shields.io/badge/OpenReview-ICLR_2023-8c1b13.svg)](https://openreview.net/forum?id=Sy-o2N0hF4f) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/YeWR/FICC)  
-  `repr: discrete-VQ` `obj: IDM+FDM` `data: game/sim` `use: WM-control · policy-decode`  
-  Extracts VQ latent actions from action-free video with forward-inverse cycle consistency, then fine-tunes the pretrained latent dynamics for Atari control.
-
-- **Playable Environments** — *Playable Environments: Video Manipulation in Space and Time*. CVPR 2022.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2203.01914-b31b1b.svg)](https://arxiv.org/abs/2203.01914) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/willi-menapace/PlayableEnvironments)  
-  `repr: discrete` `obj: IDM+FDM` `data: video` `use: WM-control`  
-  Extends Playable Video Generation to controlling 3D object dynamics in a volumetric playable environment.
-
-- **Playable Video Generation** — CVPR 2021.  
-  [![arXiv](https://img.shields.io/badge/arXiv-2101.12195-b31b1b.svg)](https://arxiv.org/abs/2101.12195) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/willi-menapace/PlayableVideoGeneration)  
-  `repr: discrete` `obj: IDM+FDM` `data: video` `use: WM-control`  
-  Learns a discrete action vocabulary fully unsupervised from unlabeled video and uses it as the user's control interface — the direct precursor of Genie's playable interface.
-
-- [Borderline] **Play-LMP** — *Learning Latent Plans from Play*. CoRL 2019.  
-  [![arXiv](https://img.shields.io/badge/arXiv-1903.01973-b31b1b.svg)](https://arxiv.org/abs/1903.01973) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://learning-from-play.github.io)  
-  `repr: continuous plan` `obj: structured` `data: robot play` `use: policy-decode`  
-  Uses teleoperated play data with actions, but established the latent plan/skill space as a reusable control interface.
-
-- **ILPO** — *Imitating Latent Policies from Observation*. ICML 2019.  
-  [![arXiv](https://img.shields.io/badge/arXiv-1805.07914-b31b1b.svg)](https://arxiv.org/abs/1805.07914) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/ashedwards/ILPO)  
-  `repr: discrete` `obj: IDM+FDM` `data: game/sim` `use: policy-decode`  
-  Canonical precursor: infers discrete latent actions and their effects from state-only observations, then grounds them with limited environment interaction.
-
-- **CLASP** — *Learning What You Can Do Before Doing Anything*. ICLR 2019.  
-  [![arXiv](https://img.shields.io/badge/arXiv-1806.09655-b31b1b.svg)](https://arxiv.org/abs/1806.09655)  
-  `repr: continuous` `obj: world-model` `data: sim video` `use: policy-decode`  
-  Learns a latent action space from passive video via stochastic prediction with a composability constraint, then grounds it with orders of magnitude fewer action labels.
-
-### Benchmarks and probes
-
-| Probe | What it measures | Used by | Notes |
-|---|---|---|---|
-| Action grounding after observation-only pretraining | Whether latent actions can be decoded into executable controls | LAPO | Needs a small labeled set. |
-| Controllability of generated rollouts | Whether latent actions produce consistent world changes | Genie line | Indirectly depends on world-model quality. |
 
 ## Robot Policy & VLA Pretraining
 
@@ -571,6 +480,100 @@ These entries use pseudo-labels from an IDM trained with ground-truth actions, o
   `repr: pseudo-labeled actions` `obj: supervised-IDM` `data: game/sim` `use: policy-pretrain`  
   Historical precursor: train an IDM on labeled Minecraft data, pseudo-label internet video, then train a policy.
 
+## Foundations & Precursors
+
+### Models at a glance
+
+| Name | Year | Representation | Objective | Data | Primary use | Links |
+|---|---:|---|---|---|---|---|
+| Genie 2 | 2024 | continuous/action interface | world-model | game/sim | WM-control | [Blog](https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/) |
+| IGOR | 2024 | continuous | IDM+FDM | human-video + robot | cross-embodiment | [Paper](https://arxiv.org/abs/2411.00785) |
+| DynaMo | 2024 | continuous | IDM+FDM | robot | representation pretraining | [Paper](https://arxiv.org/abs/2409.12192), [Code](https://github.com/jeffacce/dynamo_ssl) |
+| Genie | 2024 | discrete-VQ | IDM+FDM | game video | WM-control | [Paper](https://arxiv.org/abs/2402.15391) |
+| LAPO | 2024 | continuous -> discrete | IDM+FDM | game/sim | policy-decode | [Paper](https://arxiv.org/abs/2312.10812), [Code](https://github.com/schmidtdominik/LAPO) |
+| XSkill | 2023 | skill prototypes | contrastive | human-video + robot | cross-embodiment | [Paper](https://arxiv.org/abs/2307.09955), [Code](https://github.com/real-stanford/xskill) |
+| MimicPlay | 2023 | continuous plan | structured | human play video + robot | policy-decode | [Paper](https://arxiv.org/abs/2302.12422), [Code](https://github.com/j96w/MimicPlay) |
+| FICC | 2023 | discrete-VQ | IDM+FDM | game video | WM-control, policy-decode | [Paper](https://openreview.net/forum?id=Sy-o2N0hF4f), [Code](https://github.com/YeWR/FICC) |
+| Playable Environments | 2022 | discrete | IDM+FDM | video | WM-control | [Paper](https://arxiv.org/abs/2203.01914), [Code](https://github.com/willi-menapace/PlayableEnvironments) |
+| Playable Video Generation | 2021 | discrete | IDM+FDM | video | WM-control | [Paper](https://arxiv.org/abs/2101.12195), [Code](https://github.com/willi-menapace/PlayableVideoGeneration) |
+| Play-LMP | 2019 | continuous plan | structured | robot play | policy-decode | [Paper](https://arxiv.org/abs/1903.01973), [Project](https://learning-from-play.github.io) |
+| ILPO | 2019 | discrete | IDM+FDM | game/sim | policy-decode | [Paper](https://arxiv.org/abs/1805.07914), [Code](https://github.com/ashedwards/ILPO) |
+| CLASP | 2019 | continuous | world-model | sim video | policy-decode | [Paper](https://arxiv.org/abs/1806.09655) |
+
+### Entries
+
+- [System] **Genie 2** — *A Large-Scale Foundation World Model*. Google DeepMind, 2024.
+  [![Blog](https://img.shields.io/badge/Blog-DeepMind-blue.svg)](https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/)
+  `repr: continuous/action interface` `obj: world-model` `data: game/sim` `use: WM-control`
+  Scales the interactive-world-model line to richer 3D environments and longer horizons.
+
+- **IGOR** — *Image-GOal Representations are the Atomic Control Units for Foundation Models in Embodied AI*. 2024.
+  [![arXiv](https://img.shields.io/badge/arXiv-2411.00785-b31b1b.svg)](https://arxiv.org/abs/2411.00785)
+  `repr: continuous` `obj: IDM+FDM` `data: human-video + robot` `use: cross-embodiment`
+  Studies image-goal/action units as transferable control primitives across human and robot demonstrations.
+
+- [Borderline] **DynaMo** — *In-Domain Dynamics Pretraining for Visuo-Motor Control*. NeurIPS 2024.
+  [![arXiv](https://img.shields.io/badge/arXiv-2409.12192-b31b1b.svg)](https://arxiv.org/abs/2409.12192) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/jeffacce/dynamo_ssl)
+  `repr: continuous` `obj: IDM+FDM` `data: robot` `use: policy-pretrain`
+  Jointly trains latent inverse and forward dynamics on action-free demonstrations; the latent action is a representation-learning bottleneck rather than an action interface.
+
+- [Core] **Genie** — *Genie: Generative Interactive Environments*. ICML 2024 Best Paper.
+  [![arXiv](https://img.shields.io/badge/arXiv-2402.15391-b31b1b.svg)](https://arxiv.org/abs/2402.15391)
+  `repr: discrete-VQ` `obj: IDM+FDM` `data: game/sim` `use: WM-control`
+  Establishes VQ latent actions as the control interface for a playable generative environment.
+
+- [Core] **LAPO** — *Learning to Act without Actions*. ICLR 2024 spotlight.
+  [![arXiv](https://img.shields.io/badge/arXiv-2312.10812-b31b1b.svg)](https://arxiv.org/abs/2312.10812) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/schmidtdominik/LAPO)
+  `repr: continuous -> discrete` `obj: IDM+FDM` `data: game/sim` `use: policy-decode`
+  Minimal recipe: infer latent actions from observation-only data, then ground them with a small labeled set.
+
+- **XSkill** — *Cross Embodiment Skill Discovery*. CoRL 2023.
+  [![arXiv](https://img.shields.io/badge/arXiv-2307.09955-b31b1b.svg)](https://arxiv.org/abs/2307.09955) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/real-stanford/xskill)
+  `repr: skill prototypes` `obj: contrastive` `data: human-video + robot` `use: cross-embodiment`
+  Discovers skill prototypes from unlabeled human and robot video and composes them for cross-embodiment imitation.
+
+- [Borderline] **MimicPlay** — *Long-Horizon Imitation Learning by Watching Human Play*. CoRL 2023 oral.
+  [![arXiv](https://img.shields.io/badge/arXiv-2302.12422-b31b1b.svg)](https://arxiv.org/abs/2302.12422) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/j96w/MimicPlay)
+  `repr: continuous plan` `obj: structured` `data: human-video + robot` `use: policy-decode`
+  Learns a latent plan space from action-free human play video to guide a low-level policy trained with few teleoperated demonstrations.
+
+- **FICC** — *Become a Proficient Player with Limited Data through Watching Pure Videos*. ICLR 2023.
+  [![OpenReview](https://img.shields.io/badge/OpenReview-ICLR_2023-8c1b13.svg)](https://openreview.net/forum?id=Sy-o2N0hF4f) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/YeWR/FICC)
+  `repr: discrete-VQ` `obj: IDM+FDM` `data: game/sim` `use: WM-control · policy-decode`
+  Extracts VQ latent actions from action-free video with forward-inverse cycle consistency, then fine-tunes the pretrained latent dynamics for Atari control.
+
+- **Playable Environments** — *Playable Environments: Video Manipulation in Space and Time*. CVPR 2022.
+  [![arXiv](https://img.shields.io/badge/arXiv-2203.01914-b31b1b.svg)](https://arxiv.org/abs/2203.01914) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/willi-menapace/PlayableEnvironments)
+  `repr: discrete` `obj: IDM+FDM` `data: video` `use: WM-control`
+  Extends Playable Video Generation to controlling 3D object dynamics in a volumetric playable environment.
+
+- **Playable Video Generation** — CVPR 2021.
+  [![arXiv](https://img.shields.io/badge/arXiv-2101.12195-b31b1b.svg)](https://arxiv.org/abs/2101.12195) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/willi-menapace/PlayableVideoGeneration)
+  `repr: discrete` `obj: IDM+FDM` `data: video` `use: WM-control`
+  Learns a discrete action vocabulary fully unsupervised from unlabeled video and uses it as the user's control interface — the direct precursor of Genie's playable interface.
+
+- [Borderline] **Play-LMP** — *Learning Latent Plans from Play*. CoRL 2019.
+  [![arXiv](https://img.shields.io/badge/arXiv-1903.01973-b31b1b.svg)](https://arxiv.org/abs/1903.01973) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://learning-from-play.github.io)
+  `repr: continuous plan` `obj: structured` `data: robot play` `use: policy-decode`
+  Uses teleoperated play data with actions, but established the latent plan/skill space as a reusable control interface.
+
+- **ILPO** — *Imitating Latent Policies from Observation*. ICML 2019.
+  [![arXiv](https://img.shields.io/badge/arXiv-1805.07914-b31b1b.svg)](https://arxiv.org/abs/1805.07914) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/ashedwards/ILPO)
+  `repr: discrete` `obj: IDM+FDM` `data: game/sim` `use: policy-decode`
+  Canonical precursor: infers discrete latent actions and their effects from state-only observations, then grounds them with limited environment interaction.
+
+- **CLASP** — *Learning What You Can Do Before Doing Anything*. ICLR 2019.
+  [![arXiv](https://img.shields.io/badge/arXiv-1806.09655-b31b1b.svg)](https://arxiv.org/abs/1806.09655)
+  `repr: continuous` `obj: world-model` `data: sim video` `use: policy-decode`
+  Learns a latent action space from passive video via stochastic prediction with a composability constraint, then grounds it with orders of magnitude fewer action labels.
+
+### Benchmarks and probes
+
+| Probe | What it measures | Used by | Notes |
+|---|---|---|---|
+| Action grounding after observation-only pretraining | Whether latent actions can be decoded into executable controls | LAPO | Needs a small labeled set. |
+| Controllability of generated rollouts | Whether latent actions produce consistent world changes | Genie line | Indirectly depends on world-model quality. |
+
 ## Evaluation & Probing
 
 There is still no widely adopted LAM benchmark — LARY (2026) is a first dedicated attempt. Current work mostly evaluates downstream task success or uses method-specific probes.
@@ -584,33 +587,13 @@ There is still no widely adopted LAM benchmark — LARY (2026) is a first dedica
 | Dedicated latent-action benchmark | semantics + low-level control alignment over 1M videos | LARY | New; adoption still unproven. |
 | Downstream VLA success | LIBERO, SimplerEnv, MetaWorld, real robot | LAPA, UniVLA, ALAM, VLA-JEPA | Confounds LAM quality with policy architecture and data scale. |
 
-## Open-Source Implementations
+<a id="contact"></a>
 
-| Repository | Scope | Status | Notes |
-|---|---|---|---|
-| [BeingBeyond/Being-H](https://github.com/BeingBeyond/Being-H) | egocentric latent world-action model | official | Being-H family repository; H0.7 code/checkpoint availability may lag the paper. |
-| [fx-hit/CoWVLA](https://github.com/fx-hit/CoWVLA) | world-model thinking in latent motion | official | CVPR 2026. |
-| [lucidrains/HiLAM](https://github.com/lucidrains/HiLAM) | hierarchical latent actions | unofficial | Clean research implementation, not an official release. |
-| [dreamzero0/dreamzero](https://github.com/dreamzero0/dreamzero) | world action model policy | official | Pretrain, fine-tune, and evaluate DreamZero. |
-| [jiangranlv/LDA-1B](https://github.com/jiangranlv/LDA-1B) | scaled latent dynamics action model | official | Large-scale data ingestion and model release. |
-| [ginwind/VLA-JEPA](https://github.com/ginwind/VLA-JEPA) | JEPA-style latent world model for VLA | official | Official implementation. |
-| [XizoB/LAOF](https://github.com/XizoB/LAOF) | optical-flow-constrained latent actions | official | CVPR 2026. |
-| [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) | humanoid loco-manipulation latent actions | official (no code yet) | Resource-only repo; the authors state there is no timeline for releasing the codebase. |
-| [thu-ml/Motus](https://github.com/thu-ml/Motus) | latent action world model | official | Flow-derived latent actions for world-action modeling. |
-| [baheytharwat/lawm](https://github.com/baheytharwat/lawm) | latent action pretraining through world modeling | official | Official implementation. |
-| [microsoft/villa-x](https://github.com/microsoft/villa-x) | ViLLA latent-action modeling | official | Useful for VLA integration details. |
-| [alibaba-damo-academy/WorldVLA](https://github.com/alibaba-damo-academy/WorldVLA) | autoregressive action world model | official | Now redirects to the renamed RynnVLA-002 repo. |
-| [KimHanjung/UniSkill](https://github.com/KimHanjung/UniSkill) | cross-embodiment skill representations | official | Skill-level latent-action transfer. |
-| [OpenDriveLab/UniVLA](https://github.com/OpenDriveLab/UniVLA) | task-centric latent actions | official | Multi-benchmark VLA pipeline. |
-| [Little-Podi/AdaWorld](https://github.com/Little-Podi/AdaWorld) | adaptable world model with latent actions | official | ICML 2025; weights on Hugging Face. |
-| [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) | GR00T N1 foundation model | official | Latent-action pretraining on action-free human video. |
-| [TencentARC/Moto](https://github.com/TencentARC/Moto) | latent motion tokens | official | Weights plus training/eval code (ICCV 2025 Oral). |
-| [LatentActionPretraining/LAPA](https://github.com/LatentActionPretraining/LAPA) | VLA latent-action pretraining | official | Reference implementation for LAPA-style latent action prediction. |
-| [insait-institute/GenieRedux](https://github.com/insait-institute/GenieRedux) | Genie reproduction with agent exploration | official | CVPR 2025 follow-up codebase. |
-| [FLAIROx/jafar](https://github.com/FLAIROx/jafar) | JAX Genie reproduction | research | Single-GPU CoinRun Genie pipeline including the LAM. |
-| [p-doom/jasmine](https://github.com/p-doom/jasmine) | JAX world-modeling codebase | official | Order-of-magnitude faster Genie CoinRun reproduction. |
-| [schmidtdominik/LAPO](https://github.com/schmidtdominik/LAPO) | observation-only latent-action policy loop | official | Reference implementation for LAPO. |
-| [openai/Video-Pre-Training](https://github.com/openai/Video-Pre-Training) | IDM pseudo-labeling precursor | official | Borderline but historically important. |
+## ❤️ Contact
+
+I am Shen Yujiao. Suggestions, corrections, and new latent-action resources are welcome.
+
+Email: [shenyujiao18@gmail.com](mailto:shenyujiao18@gmail.com)
 
 ## Contributing
 
