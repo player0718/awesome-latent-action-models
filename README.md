@@ -41,7 +41,6 @@ Found this useful? Star the repository to help others discover it. ⭐
 - [🟨 Borderline: Pseudo-Action Labeling](#borderline-pseudo-action-labeling)
 - [🧪 Evaluation & Probing](#evaluation--probing)
 - [🛠️ Open-Source Implementations](#open-source-implementations)
-- [❓ Open Problems](#open-problems)
 - [🤝 Contributing](#contributing)
 - [⚖️ License](#license)
 
@@ -612,16 +611,6 @@ There is still no widely adopted LAM benchmark — LARY (2026) is a first dedica
 | [p-doom/jasmine](https://github.com/p-doom/jasmine) | JAX world-modeling codebase | official | Order-of-magnitude faster Genie CoinRun reproduction. |
 | [schmidtdominik/LAPO](https://github.com/schmidtdominik/LAPO) | observation-only latent-action policy loop | official | Reference implementation for LAPO. |
 | [openai/Video-Pre-Training](https://github.com/openai/Video-Pre-Training) | IDM pseudo-labeling precursor | official | Borderline but historically important. |
-
-## Open Problems
-
-1. **Granularity.** Step-level latents capture motion, not skills. Hierarchical and temporally extended latents are still early.
-2. **Distractor entanglement.** LAOM shows the failure mode; LAOF and structured constraints help, but a principled label-free fix is open.
-3. **Structure.** ALAM suggests compositional and invertible action spaces may matter. The field lacks controlled comparisons across structures.
-4. **Discrete vs. continuous.** VQ tokens are language-friendly and controllable, while continuous latents preserve precision. The trade-off is not settled.
-5. **Direct evaluation.** Downstream success conflates latent quality, policy capacity, and data scale. A direct LAM benchmark is still missing.
-6. **Cross-embodiment semantics.** It is unclear when a latent action should mean "open the drawer" across human hands, grippers, and dexterous robot hands.
-7. **Safety and controllability.** World-model action interfaces need failure detection, uncertainty, and intervention mechanisms before being used in closed-loop agents.
 
 ## Contributing
 
