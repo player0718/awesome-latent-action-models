@@ -8,7 +8,7 @@ Describe what this PR changes and why.
 - [ ] Update an existing entry
 - [ ] Add or update an implementation link
 - [ ] Add or update a benchmark/probe entry
-- [ ] Move an item into or out of `Watchlist`
+- [ ] Clarify a borderline or uncertain candidate
 - [ ] Fix formatting, consistency, or broken links
 
 ## Files Updated

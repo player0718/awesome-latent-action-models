@@ -12,7 +12,7 @@ When adding or editing an entry:
 2. Add or update the matching row in the section's `### Models at a glance` table when the entry is a model or system.
 3. Add a full item under `### Entries` only once. Use short cross-links elsewhere.
 4. Preserve the section ordering rule: core entries first when marked, then chronological order by year.
-5. Move uncertain candidates to `Watchlist` until the paper, code, or C1/C2 justification is clear.
+5. Keep uncertain candidates out of the main list until the paper, code, or C1/C2 justification is clear; use the PR notes or an issue to discuss them first.
 
 ## Inclusion Checklist
 
