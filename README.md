@@ -18,46 +18,38 @@ PRs are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before adding en
 
 ## Overview
 
-- [Aim](#aim) | [Scope & Tag Legend](#scope--tag-legend) | [Papers & Surveys](#papers--surveys)
-- [Foundations & Precursors](#foundations--precursors)
-- [Robot Policy & VLA Pretraining](#robot-policy--vla-pretraining)
-- [World Models & Interactive Generation](#world-models--interactive-generation)
-- [Analysis, Robustness & Theory](#analysis-robustness--theory)
-- [Borderline: Pseudo-Action Labeling](#borderline-pseudo-action-labeling)
-- [Evaluation & Probing](#evaluation--probing)
-- [Open-Source Implementations](#open-source-implementations)
-- [Watchlist](#watchlist)
-- [Open Problems](#open-problems)
-- [Related Awesome Lists](#related-awesome-lists) | [Contributing](#contributing) | [Citation](#citation) | [License](#license)
+This repository provides a curated collection of papers, systems, code, probes, and open problems focused on Latent Action Models (LAMs). Unlike broad VLA, WAM, or robot-learning lists, it is organized around the latent-action mechanism itself: how the action representation is learned, what data it uses, and where the latent interface is reused.
+
+The repository is organized around four reading paths:
+
+- 🧱 **Foundations & Precursors**: early observation-only control, playable video, and latent skill spaces.
+- 🤖 **Robot Policy & VLA Pretraining**: latent actions used for policy learning, VLA pretraining, and cross-embodiment transfer.
+- 🌍 **World Models & Interactive Generation**: latent actions as control interfaces for generated rollouts and world-action models.
+- 🔬 **Analysis, Robustness & Theory**: probes, failure modes, evaluation gaps, and borderline cases.
+
+Found this useful? Star the repository to help others discover it. ⭐
+
+### 📚 Table of Contents
+
+- [🎯 Aim](#aim)
+- [🧭 Evolution at a Glance](#evolution-at-a-glance)
+- [📝 Papers & Surveys](#papers--surveys)
+- [🧱 Foundations & Precursors](#foundations--precursors)
+- [🤖 Robot Policy & VLA Pretraining](#robot-policy--vla-pretraining)
+- [🌍 World Models & Interactive Generation](#world-models--interactive-generation)
+- [🔬 Analysis, Robustness & Theory](#analysis-robustness--theory)
+- [🟨 Borderline: Pseudo-Action Labeling](#borderline-pseudo-action-labeling)
+- [🧪 Evaluation & Probing](#evaluation--probing)
+- [🛠️ Open-Source Implementations](#open-source-implementations)
+- [❓ Open Problems](#open-problems)
+- [🤝 Contributing](#contributing)
+- [⚖️ License](#license)
 
 ## Aim
 
 This repository organizes latent-action research by the latent-action technique itself, not by the downstream system label. A paper appears once as a primary entry under the section that best captures its main contribution, with cross-links where it also matters.
 
 The goal is fast navigation for researchers who need to compare representation choices, objectives, data domains, downstream use, code availability, and evaluation protocols without chasing scattered world-model, VLA, and robot-learning reading lists.
-
-## Scope & Tag Legend
-
-A **Latent Action Model** learns a representation `z_t` of the transition from `(o_t, o_{t+1})` and uses that representation as an action-like interface.
-
-**Inclusion criteria**
-
-- **C1: Label-free action inference.** The action representation is learned from action-free or weakly labeled video through reconstruction, prediction, flow, contrast, or structural constraints. If a ground-truth-trained IDM produces the labels, the entry belongs in [Borderline: Pseudo-Action Labeling](#borderline-pseudo-action-labeling).
-- **C2: Action-interface usage.** The latent is used as an action: world-model conditioning, VLA/policy pretraining, decoding to executable actions, cross-embodiment transfer, or post-training action refinement.
-
-**Notation**
-
-- **[Core]**: recommended starting point for the topic.
-- **[System]**: system-level paper where latent actions are one important component rather than the only contribution.
-- **[Survey]**: taxonomy, benchmark, or survey paper useful for context.
-- **[Borderline]**: important precedent that relaxes C1 or C2.
-
-| Axis | Tag prefix | Vocabulary |
-|---|---|---|
-| Representation | `repr:` | `discrete-VQ` · `discrete-FSQ` · `discrete-token` · `continuous` · `hybrid` · `hierarchical` · `structured` |
-| Learning signal | `obj:` | `IDM+FDM` · `world-model` · `flow` · `contrastive` · `structured` · `supervised-IDM` |
-| Training data domain | `data:` | `robot` · `human-video` · `game/sim` · `driving` · `ego` · `mixed` · `web-video` |
-| Downstream use | `use:` | `WM-control` · `VLA-pretrain` · `policy-decode` · `cross-embodiment` · `post-train` · `analysis` |
 
 ## Evolution at a Glance
 
@@ -126,7 +118,7 @@ timeline
 - [Borderline] **DynaMo** — *In-Domain Dynamics Pretraining for Visuo-Motor Control*. NeurIPS 2024.  
   [![arXiv](https://img.shields.io/badge/arXiv-2409.12192-b31b1b.svg)](https://arxiv.org/abs/2409.12192) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/jeffacce/dynamo_ssl)  
   `repr: continuous` `obj: IDM+FDM` `data: robot` `use: policy-pretrain`  
-  Jointly trains latent inverse and forward dynamics on action-free demonstrations; relaxes C2 — the latent action is a representation-learning bottleneck rather than an action interface.
+  Jointly trains latent inverse and forward dynamics on action-free demonstrations; the latent action is a representation-learning bottleneck rather than an action interface.
 
 - [Core] **Genie** — *Genie: Generative Interactive Environments*. ICML 2024 Best Paper.  
   [![arXiv](https://img.shields.io/badge/arXiv-2402.15391-b31b1b.svg)](https://arxiv.org/abs/2402.15391)  
@@ -166,7 +158,7 @@ timeline
 - [Borderline] **Play-LMP** — *Learning Latent Plans from Play*. CoRL 2019.  
   [![arXiv](https://img.shields.io/badge/arXiv-1903.01973-b31b1b.svg)](https://arxiv.org/abs/1903.01973) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://learning-from-play.github.io)  
   `repr: continuous plan` `obj: structured` `data: robot play` `use: policy-decode`  
-  Relaxes C1 (teleoperated play data contains actions) but established the latent plan/skill space as a reusable control interface.
+  Uses teleoperated play data with actions, but established the latent plan/skill space as a reusable control interface.
 
 - **ILPO** — *Imitating Latent Policies from Observation*. ICML 2019.  
   [![arXiv](https://img.shields.io/badge/arXiv-1805.07914-b31b1b.svg)](https://arxiv.org/abs/1805.07914) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/ashedwards/ILPO)  
@@ -345,7 +337,9 @@ timeline
 | DiLA | 2026 | continuous | IDM+FDM | mixed video | WM-control | [Paper](https://arxiv.org/abs/2605.15725) |
 | Being-H0.7 | 2026 | continuous | world-action model | ego | cross-embodiment | [Paper](https://arxiv.org/abs/2605.00078), [Project](https://research.beingbeyond.com/being-h07), [Code](https://github.com/BeingBeyond/Being-H) |
 | Latent-WAM | 2026 | continuous | world-action model | driving | WM-control, policy-decode | [Paper](https://arxiv.org/abs/2603.24581) |
+| LAC-WM | 2026 | unified latent action | robot foundation world model | robot | cross-embodiment, WM-control | [OpenReview](https://openreview.net/forum?id=vEZgPr1deb) |
 | FLAM | 2026 | factored latent actions | world-model | multi-entity video | WM-control, policy-decode | [Paper](https://arxiv.org/abs/2602.16229) |
+| DreamZero | 2026 | world-action model | video + action modeling | robot + video | WM-control, policy-decode, cross-embodiment | [Paper](https://arxiv.org/abs/2602.15922), [Code](https://github.com/dreamzero0/dreamzero) |
 | Olaf-World | 2026 | continuous | IDM+FDM | web-video | WM-control | [Paper](https://arxiv.org/abs/2602.10104), [Code](https://github.com/showlab/Olaf-World) |
 | SWIRL | 2026 | continuous | world-model | mixed | WM-control | [Paper](https://arxiv.org/abs/2602.06130) |
 | Latent Action World Models in the Wild | 2026 | continuous | IDM+FDM | web-video | WM-control | [Paper](https://arxiv.org/abs/2601.05230) |
@@ -380,10 +374,20 @@ timeline
   `repr: continuous` `obj: world-model` `data: driving` `use: WM-control · policy-decode`  
   Transfers the latent world-action recipe to autonomous driving.
 
+- **LAC-WM** — *Latent Action Robot Foundation World Models for Cross-Embodiment Adaptation*. 2026.
+  [![OpenReview](https://img.shields.io/badge/OpenReview-ICLR_2026-8c1b13.svg)](https://openreview.net/forum?id=vEZgPr1deb)
+  `repr: unified latent action` `obj: robot foundation world model` `data: robot` `use: cross-embodiment · WM-control`
+  Learns a unified latent action space shared across robot embodiments and conditions a robot foundation world model on that space for adaptation to unseen embodiments.
+
 - **FLAM** — *Factored Latent Action World Models*. 2026.  
   [![arXiv](https://img.shields.io/badge/arXiv-2602.16229-b31b1b.svg)](https://arxiv.org/abs/2602.16229)  
   `repr: factored latent actions` `obj: world-model` `data: mixed video` `use: WM-control · policy-decode`  
   Decomposes scenes into factors, each with its own inferred latent action, to handle multi-entity dynamics.
+
+- [System] **DreamZero** — *World Action Models are Zero-shot Policies*. 2026.
+  [![arXiv](https://img.shields.io/badge/arXiv-2602.15922-b31b1b.svg)](https://arxiv.org/abs/2602.15922) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://dreamzero0.github.io/) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/dreamzero0/dreamzero)
+  `repr: world-action model` `obj: video + action modeling` `data: robot + video` `use: WM-control · policy-decode · cross-embodiment`
+  Builds a real-time closed-loop world action model on a pretrained video diffusion backbone and uses joint video-action modeling for zero-shot policy execution and cross-embodiment transfer.
 
 - **Olaf-World** — *Orienting Latent Actions for Video World Modeling*. 2026.  
   [![arXiv](https://img.shields.io/badge/arXiv-2602.10104-b31b1b.svg)](https://arxiv.org/abs/2602.10104) [![Code](https://img.shields.io/badge/Code-GitHub-black.svg)](https://github.com/showlab/Olaf-World)  
@@ -523,7 +527,7 @@ timeline
 
 ## Borderline: Pseudo-Action Labeling
 
-These entries relax **C1** because an IDM trained with ground-truth actions produces pseudo-labels, or because the inferred interface is an explicit track/flow representation rather than a latent. They are still important because they established the practical "label video with inferred actions" playbook that label-free LAMs later generalized.
+These entries use pseudo-labels from an IDM trained with ground-truth actions, or use an explicit track/flow representation rather than a latent. They are still important because they established the practical "label video with inferred actions" playbook that label-free LAMs later generalized.
 
 ### Models at a glance
 
@@ -551,7 +555,7 @@ These entries relax **C1** because an IDM trained with ground-truth actions prod
 - [Borderline] **OmniJARVIS** — *Unified Vision-Language-Action Tokenization Enables Open-World Instruction Following Agents*. NeurIPS 2024.  
   [![arXiv](https://img.shields.io/badge/arXiv-2407.00114-b31b1b.svg)](https://arxiv.org/abs/2407.00114) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://omnijarvis.github.io/)  
   `repr: discrete-FSQ` `obj: self-supervised tokenization` `data: game/sim` `use: VLA-pretrain`  
-  Adds FSQ behavior tokens to the LM vocabulary as the action interface; the tokenizer trains on trajectories that include actions, relaxing C1.
+  Adds FSQ behavior tokens to the LM vocabulary as the action interface; the tokenizer trains on trajectories that include actions.
 
 - [Borderline] **Track2Act** — *Predicting Point Tracks from Internet Videos enables Generalizable Robot Manipulation*. ECCV 2024.  
   [![arXiv](https://img.shields.io/badge/arXiv-2405.01527-b31b1b.svg)](https://arxiv.org/abs/2405.01527) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://homangab.github.io/track2act/)  
@@ -588,6 +592,7 @@ There is still no widely adopted LAM benchmark — LARY (2026) is a first dedica
 | [BeingBeyond/Being-H](https://github.com/BeingBeyond/Being-H) | egocentric latent world-action model | official | Being-H family repository; H0.7 code/checkpoint availability may lag the paper. |
 | [fx-hit/CoWVLA](https://github.com/fx-hit/CoWVLA) | world-model thinking in latent motion | official | CVPR 2026. |
 | [lucidrains/HiLAM](https://github.com/lucidrains/HiLAM) | hierarchical latent actions | unofficial | Clean research implementation, not an official release. |
+| [dreamzero0/dreamzero](https://github.com/dreamzero0/dreamzero) | world action model policy | official | Pretrain, fine-tune, and evaluate DreamZero. |
 | [jiangranlv/LDA-1B](https://github.com/jiangranlv/LDA-1B) | scaled latent dynamics action model | official | Large-scale data ingestion and model release. |
 | [ginwind/VLA-JEPA](https://github.com/ginwind/VLA-JEPA) | JEPA-style latent world model for VLA | official | Official implementation. |
 | [XizoB/LAOF](https://github.com/XizoB/LAOF) | optical-flow-constrained latent actions | official | CVPR 2026. |
@@ -608,19 +613,6 @@ There is still no widely adopted LAM benchmark — LARY (2026) is a first dedica
 | [schmidtdominik/LAPO](https://github.com/schmidtdominik/LAPO) | observation-only latent-action policy loop | official | Reference implementation for LAPO. |
 | [openai/Video-Pre-Training](https://github.com/openai/Video-Pre-Training) | IDM pseudo-labeling precursor | official | Borderline but historically important. |
 
-## Watchlist
-
-Use this section for candidates that may belong in the list but still need one of: a public paper, an official project/code link, or a clearer C1/C2 justification.
-
-| Candidate | Why watch | Needed before promotion |
-|---|---|---|
-| LAC-WM ([OpenReview](https://openreview.net/forum?id=vEZgPr1deb)) | Unified latent action space for cross-embodiment world models; accepted as an ICML 2026 poster under the title "Cross-Embodiment Robot Foundation World Models with Latent Actions" | Promotion criteria met — add as a primary entry citing the ICML 2026 title; no code yet. |
-| DreamZero ([paper](https://arxiv.org/abs/2602.15922), [code](https://github.com/dreamzero0/dreamzero)) | NVIDIA GEAR's "World Action Models are Zero-shot Policies"; strong WAM with public code | Decide whether it is label-free LAM, supervised action world model, or system-level WAM before promoting. |
-| Genie Envisioner ([paper](https://arxiv.org/abs/2508.05635), [code](https://github.com/AgibotTech/Genie-Envisioner)) | AgiBot world-foundation platform; GE-Act decodes world-model latents to action trajectories | C1 only partially holds (latents come from instruction-conditioned video diffusion, not an inferred action code) — decide [System] entry vs exclusion. |
-| LeVERB ([paper](https://arxiv.org/abs/2506.13751)) | Humanoid whole-body "latent action" framing | Resolved: the latent-verb space is a CVAE trained on synthetic action-labeled demonstrations (fails C1) — keep out of the main list; project page currently 404. |
-
-Unvetted leads from a 2026 arXiv title sweep (not yet checked against C1/C2): LAFP (2606.10517), LARA (2606.07100), RotVLA (2605.13403), "Learning Visual Feature-Based World Models via Residual Latent Action" (2605.07079), "Identifying Latent Actions and Dynamics from Offline Data via Demonstrator Diversity" (2603.17577), UniLACT (2602.20231), MVP-LAM (2602.03668), Segment to Focus (2602.02259), "Vision-Language Models Unlock Task-Centric Latent Actions" (2601.22714), LoLA (2512.20166).
-
 ## Open Problems
 
 1. **Granularity.** Step-level latents capture motion, not skills. Hierarchical and temporally extended latents are still early.
@@ -631,30 +623,11 @@ Unvetted leads from a 2026 arXiv title sweep (not yet checked against C1/C2): LA
 6. **Cross-embodiment semantics.** It is unclear when a latent action should mean "open the drawer" across human hands, grippers, and dexterous robot hands.
 7. **Safety and controllability.** World-model action interfaces need failure detection, uncertainty, and intervention mechanisms before being used in closed-loop agents.
 
-## Related Awesome Lists
-
-- [OpenMOSS/Awesome-WAM](https://github.com/OpenMOSS/Awesome-WAM) — World Action Models from a system-level perspective.
-- [DravenALG/awesome-vla-wam](https://github.com/DravenALG/awesome-vla-wam) — VLA and world-model resources.
-- [IRMVLab/awesome-robot-learning-from-human-videos](https://github.com/IRMVLab/awesome-robot-learning-from-human-videos) — human-video skill transfer and robot learning.
-- [LMD0311/Awesome-World-Model](https://github.com/LMD0311/Awesome-World-Model) — broader world-model literature.
-- [player0718/awesome-ego-video-datasets](https://github.com/player0718/awesome-ego-video-datasets) — structure reference for this repository.
-
 ## Contributing
 
 Contributions should update [`README.md`](README.md) as the single source of truth. Keep one primary entry per paper or system, use official links when possible, and include all four tags for model entries.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the checklist and PR format.
-
-## Citation
-
-```bibtex
-@misc{awesome-latent-action-models,
-  title  = {Awesome Latent Action Models},
-  author = {Shiyu Jiang and contributors},
-  year   = {2026},
-  url    = {https://github.com/player0718/awesome-latent-action-models}
-}
-```
 
 ## License
 
