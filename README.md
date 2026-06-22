@@ -92,6 +92,7 @@ timeline
 | Name | Year | Representation | Objective | Data | Primary use | Links |
 |---|---:|---|---|---|---|---|
 | ALAM | 2026 | continuous structured | structured + flow matching | robot | VLA-pretrain, policy-decode | [Paper](https://arxiv.org/abs/2605.10819) |
+| LAFP | 2026 | discrete-VQ | IDM+FDM + flow matching | game/sim | policy-decode | [Paper](https://arxiv.org/abs/2606.10517) |
 | World2Act | 2026 | continuous skill | contrastive/world-model dynamics | robot | post-train | [Paper](https://arxiv.org/abs/2603.10422), [Project](https://wm2act.github.io/) |
 | HiLAM | 2026 | hierarchical | IDM+FDM | mixed | VLA-pretrain, policy-decode | [Paper](https://arxiv.org/abs/2603.05815), [Code](https://github.com/lucidrains/HiLAM) |
 | CoWVLA | 2026 | continuous motion | world-model | robot | VLA-pretrain | [Paper](https://arxiv.org/abs/2603.03195), [Code](https://github.com/fx-hit/CoWVLA) |
@@ -120,6 +121,11 @@ timeline
   [![arXiv](https://img.shields.io/badge/arXiv-2605.10819-b31b1b.svg)](https://arxiv.org/abs/2605.10819)  
   `repr: continuous structured` `obj: structured + flow` `data: robot` `use: VLA-pretrain · policy-decode`  
   Adds additivity and reversibility constraints, then uses those same structures as representation-quality probes.
+
+- **LAFP** — *Preserving Latent Action Structure in Latent Policy Learning via Flow Matching*. 2026.
+  [![arXiv](https://img.shields.io/badge/arXiv-2606.10517-b31b1b.svg)](https://arxiv.org/abs/2606.10517)
+  `repr: discrete-VQ` `obj: IDM+FDM + flow matching` `data: game/sim` `use: policy-decode`
+  Replaces behavior-cloning latent-policy distillation with flow matching and uses inference-time interpolation to reduce stochastic latent-action to physical-action decoder misalignment.
 
 - **World2Act** — *Latent Action Post-Training from World Model Dynamics*. 2026.  
   [![arXiv](https://img.shields.io/badge/arXiv-2603.10422-b31b1b.svg)](https://arxiv.org/abs/2603.10422) [![Project](https://img.shields.io/badge/Project-Site-blue.svg)](https://wm2act.github.io/)  
